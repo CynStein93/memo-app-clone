@@ -18,7 +18,7 @@ function App(props) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(_isLoggedIn)
     const [memoList, setMemoList] = useState([])
-    const [selectedMemo, setSelectedMemo] = useState(_selectedMemo);
+    const [selectedMemo, setSelectedMemo] = useState(_selectedMemo)
 
     function onLogin(creds) {
         if (creds.username === 'admin' && creds.password === 'pass') {
@@ -37,6 +37,11 @@ function App(props) {
         setSelectedMemo(memo)
     }
 
+    function onDeleteSelect(memo) {
+        memo.trash = true
+        setMemoList(memoList.filter(m =>!m.trash));
+    }
+
     if (!isLoggedIn) {
         return <_Login onSubmit={onLogin}/>
     }
@@ -47,7 +52,7 @@ function App(props) {
 
     return <>
         <_MemoAdd onMemoAdd={onMemoAdd}/>
-        <_MemoList list={memoList} onEditSelect={onEditSelect}/>
+        <_MemoList list={memoList} onEditSelect={onEditSelect} onDeleteSelect = {onDeleteSelect}/>
     </>
 }
 

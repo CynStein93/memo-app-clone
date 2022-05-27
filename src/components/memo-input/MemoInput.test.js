@@ -52,7 +52,8 @@ test('should run onSubmit prop when "Submit" button is clicked passing the user 
         title: 'my title',
         desc: 'my desc',
         date: '2022-02-02',
-        finished: true
+        finished: true,
+        trash: false
     }
 
     const title = screen.getByPlaceholderText('Title');

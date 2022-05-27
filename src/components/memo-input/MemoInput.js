@@ -6,7 +6,8 @@ export function MemoInput({onSubmit}) {
         title: '',
         desc: '',
         date: new Date(),
-        finished: false
+        finished: false,
+        trash: false
     });
 
     function onFormSubmit(event) {

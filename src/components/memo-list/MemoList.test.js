@@ -57,3 +57,20 @@ test('should split finished memos and pending memos into two lists', () => {
     expect(finishedList).toStrictEqual([1,3])
     expect(pendingList).toStrictEqual([2,4])
 })
+
+test('should pass correct Memo prop and onDeleteSelect prop to each memo comp', () => {
+    const _list = [1]
+    const _onDeleteSelect = true;
+
+    let memoProp;
+    let onDeleteSelectProp;
+    const _Memo = ({memo, onDeleteSelect}) => {
+        memoProp = memo;
+        onDeleteSelectProp = onDeleteSelect;
+        return <div>MOCK</div>
+    }
+
+    render(<MemoList list={_list} onDeleteSelect={_onDeleteSelect} _Memo={_Memo}/>)
+    expect(memoProp).toBe(_list[0])
+    expect(onDeleteSelectProp).toBe(_onDeleteSelect)
+})
